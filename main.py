@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 from flask import Flask, abort, render_template, redirect, url_for, flash, jsonify
 from flask_bootstrap import Bootstrap5
 from flask_ckeditor import CKEditor
@@ -10,9 +10,13 @@ from sqlalchemy import Integer, String, Text
 from functools import wraps
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+import jinja2
 # Import your forms from the forms.py
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 
+year = datetime.now().year
+environment = jinja2.Environment()
+environment.globals['year'] = datetime.now().year
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
