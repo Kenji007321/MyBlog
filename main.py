@@ -16,7 +16,7 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 
 year = datetime.now().year
 environment = jinja2.Environment()
-environment.globals['year'] = datetime.now().year
+environment.globals['datetime'] = datetime
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
