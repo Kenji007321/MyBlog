@@ -14,13 +14,6 @@ import jinja2
 # Import your forms from the forms.py
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 
-loader = jinja2.FileSystemLoader('footer')
-environment = jinja2.Environment(loader=loader)
-environment.globals['datetime'] = datetime
-
-template = environment.get_template('footer.html')
-rendered_template = template.render()
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 ckeditor = CKEditor(app)
