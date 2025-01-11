@@ -25,7 +25,7 @@ login_manager.init_app(app)
 # CREATE DATABASE
 class Base(DeclarativeBase):
     pass
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLALCHEMY_DB')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('POSTGRESQL_DB', 'SQLALCHEMY_DB')
 db = SQLAlchemy(model_class=Base)
 db.init_app(app)
 
